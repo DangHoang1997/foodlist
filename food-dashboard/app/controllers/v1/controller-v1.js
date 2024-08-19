@@ -9,14 +9,14 @@ export let getDataForm = () => {
     let desc = document.getElementById('moTa').value;
 
  let food =  {
-    id,
-    name,
-    type,
-    price,
-    discount,
-    status,
-    image,
-    desc,
+    id : id,
+    name : name,
+    type : type,
+    price : price,
+    discount : discount,
+    status : status,
+    image : image,
+    desc : desc,
 }
 return food;
 }
@@ -29,6 +29,9 @@ export let showDataForm = (dataFood) => {
     
     document.getElementById('spLoaiMon').innerText =  type
     document.getElementById('imgMonAn').src = image
+    document.getElementById('spGiaMon').innerText = price
+    document.getElementById('spTinhTrang').innerText = status
+    document.getElementById('spMoTa').innerText = desc
 
   
 }

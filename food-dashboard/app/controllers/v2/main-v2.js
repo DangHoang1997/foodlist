@@ -1,8 +1,8 @@
 
 import {getDataForm} from "../v1/controller-v1.js"
 
-import { renderFoodlist,onSusscess } from "./controller-v2.js"
-import { deleFoodService, getlistfood,createdAPIService } from "./services.js";
+import { renderFoodlist,onSusscess,showDataFood } from "./controller-v2.js"
+import { deleFoodService, getlistfood,createdAPIService,getDetailServices,updateFood } from "./services.js";
 
 
 
@@ -53,7 +53,7 @@ window.deleteFood = (id) => {
     deleFoodService(id)
     .then((res) => {
         console.log(`xoa thanh cong`)
-        onSusscess();
+        onSusscess("xóa món ăn thành công");
         fethFoodList()
     }).catch((arr) => {
         console.log(`xoa that bai`)
@@ -83,10 +83,9 @@ window.CreatedFood= () => {
   console.log('data :', data)
   
   .then((res) => {
-    
-    console.log(`them thanh cong`)
     onSusscess();
     fethFoodList();
+
     
     
   }).catch(() => {
@@ -96,6 +95,45 @@ window.CreatedFood= () => {
   
 }
 
+
+window.editFoodList = (id) => {
+  getDetailServices(id)
+  .then((resul) => {
+    console.log("detail",resul)
+    $("#exampleModal").modal("show");
+    showDataFood(resul.data)
+  }).catch(() => {
+    console.log(`that bai`)
+  });
+
+}
+window.updateFood = (food,id) => {
+  
+  updateFood(food,id)
+  .then((res) => {
+    console.log(`cap nhat thanh cong`)
+    onSusscess();
+    fethFoodList();
+  }).catch(() => {
+    console.log(`cap nhat that bai`)
+  });
+  
+}
+
+window.updateFood = () => {
+  let data  = getDataForm();
+  let id = document.getElementById('btnThem').innerText;
+  updateFood(data,id).then((res) => {
+    onSusscess();
+    $("#exampleModal").modal("hide");
+    fethFoodList();
+  }).catch((err) => {
+  console.log('err :', err);
+  
+    
+  });
+  
+}
 
 
 

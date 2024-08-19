@@ -15,9 +15,6 @@ export let deleFoodService =  (id) => {
     
   
 }
-export let editFoodList = () => {
-    return axios.put(`${apiURl}/${id}`)
-}
 
 export let createdAPIService = (food) => {
     
@@ -28,3 +25,16 @@ export let createdAPIService = (food) => {
   })
 }
 
+export let getDetailServices = (id) => {
+  return axios.get(`${apiURl}/${id}`)
+
+
+}
+
+
+
+export let updateFood = (food,id) => {
+
+  return axios.put(`${apiURl}/${id}`,food)
+
+}
