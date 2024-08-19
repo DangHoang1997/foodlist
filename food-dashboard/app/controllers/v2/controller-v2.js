@@ -10,7 +10,10 @@
         <td>${discount}</td>
         <td>0</td>
         <td>${status? "con mon ":"het mon"}</td>
-        
+        <td>
+        <button onclick = "deleteFood(${id})" class = "btn btn-success">xóa </button>
+        <button onclick = "updateFood(${id})" class = "btn btn-blue">Sửa </button>
+        </td>
         </tr>
         `
 
@@ -20,6 +23,16 @@
 
 
     document.getElementById("tbodyFood").innerHTML = contentHTML;
+  }
+
+
+
+  export let  onSusscess = () => {
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
+    });
   }
 
  
